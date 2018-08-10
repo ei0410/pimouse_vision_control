@@ -15,7 +15,7 @@ class FaceToFace():
         self.cmd_vel = rospy.Publisher('/cmd_vel', Twist, queue_size=1)
         rospy.wait_for_service('/motor_on')
         rospy.wait_for_service('/motor_off')
-        rospy.on_shutdown(ropsy.ServiceProxy('/motor_off', Trigger).call)
+        rospy.on_shutdown(rospy.ServiceProxy('/motor_off', Trigger).call)
         rospy.ServiceProxy('/motor_on', Trigger).call()
 
     def get_image(self, img):
